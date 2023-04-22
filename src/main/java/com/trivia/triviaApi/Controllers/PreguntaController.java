@@ -1,6 +1,7 @@
 package com.trivia.triviaApi.Controllers;
 
 import com.trivia.triviaApi.Models.PreguntaModel;
+import com.trivia.triviaApi.Repositories.PreguntaRepository;
 import com.trivia.triviaApi.Services.PreguntaService;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PreguntaController {
     @Autowired
     PreguntaService preguntaService;
+    @Autowired
+    PreguntaRepository preguntaRepository;
     
     @GetMapping
     private List<PreguntaModel> ListarP(){
@@ -30,5 +33,10 @@ public class PreguntaController {
             return new ResponseEntity<>(pregunta.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    @GetMapping("/preguntas")
+    public List<PreguntaModel> getPreguntas(){
+        return preguntaRepository.BuscarDifyCat();
     }
 }

@@ -66,9 +66,5 @@ public class RespuestaModel {
 
     public void setPreguntaModel(PreguntaModel preguntaModel) {
         this.preguntaModel = preguntaModel;
-    }
-    
-    
-
-    
+    }   
 }

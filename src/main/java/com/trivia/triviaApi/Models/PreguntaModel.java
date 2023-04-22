@@ -71,8 +71,5 @@ public class PreguntaModel {
 
     public void setRespuestas(List<RespuestaModel> respuestas) {
         this.respuestas = respuestas;
-    }
-
-    
-    
+    }       
 }
