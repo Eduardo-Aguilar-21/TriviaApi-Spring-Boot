@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PreguntaController {
     @Autowired
     PreguntaService preguntaService;
-    @Autowired
-    PreguntaRepository preguntaRepository;
     
     @GetMapping
     private List<PreguntaModel> ListarP(){
@@ -35,8 +33,13 @@ public class PreguntaController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
-    @GetMapping("/preguntas")
-    public List<PreguntaModel> getPreguntas(){
-        return preguntaRepository.BuscarDifyCat();
+    @GetMapping("/dif")
+    public List<PreguntaModel> getPrec(){
+        return preguntaService.getPre();
+    }
+    
+    @GetMapping("/esp/{cat}/{dif}")
+    public List<PreguntaModel> getEspc(@PathVariable int cat, @PathVariable int dif){
+        return preguntaService.getEsp(cat, dif);
     }
 }
