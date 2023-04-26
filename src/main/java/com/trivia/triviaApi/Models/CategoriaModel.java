@@ -12,6 +12,7 @@ public class CategoriaModel {
     @Column(unique=true, nullable = false)
     private Long id_cat;
     private String nombre_cat;
+    private String des_cat;
     @OneToMany(mappedBy = "categoriaModel")
     @JsonIgnore
     private List<PreguntaModel> preguntas;
@@ -19,8 +20,9 @@ public class CategoriaModel {
     public CategoriaModel() {
     }
 
-    public CategoriaModel(String nombre_cat) {
+    public CategoriaModel(String nombre_cat, String des_cat) {
         this.nombre_cat = nombre_cat;
+        this.des_cat = des_cat;
     }
 
     public Long getId_cat() {
@@ -39,6 +41,14 @@ public class CategoriaModel {
         this.nombre_cat = nombre_cat;
     }
 
+    public String getDes_cat() {
+        return des_cat;
+    }
+
+    public void setDes_cat(String des_cat) {
+        this.des_cat = des_cat;
+    }
+
     public List<PreguntaModel> getPreguntas() {
         return preguntas;
     }
@@ -46,5 +56,7 @@ public class CategoriaModel {
     public void setPreguntas(List<PreguntaModel> preguntas) {
         this.preguntas = preguntas;
     }
+
+    
     
 }
