@@ -33,9 +33,9 @@ public class RespuestaController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
    
-    @GetMapping("/busp")
+    @GetMapping("/busp/{id_p}")
     @ResponseBody
-    public List<RespuestaModel> Busp(){
-        return respuestaService.BusqueEspPre();
+    public List<RespuestaModel> Busp(@PathVariable int id_p){
+        return respuestaService.BusqueEspPre(id_p);
     }
 }

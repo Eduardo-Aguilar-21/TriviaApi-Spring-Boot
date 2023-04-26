@@ -24,18 +24,14 @@ public class RespuestaService {
         return respuestaRepository.findById(id);
     }
     
-    public List<RespuestaModel> BusqueEspPre(){
-        List<Object[]> resultados = respuestaRepository.BuscarRespEsp();
+    public List<RespuestaModel> BusqueEspPre(int id){
+        List<Object[]> resultados = respuestaRepository.BuscarRespEsp(id);
         List<RespuestaModel> respuestap = new ArrayList<>();
         
         for(Object[] resultado : resultados){
             RespuestaModel respuestam = (RespuestaModel) resultado[0];
             PreguntaModel preguntam = (PreguntaModel) resultado[1];
-            CategoriaModel categoriam = (CategoriaModel) resultado[2];
-            DificultadModel dificultadm = (DificultadModel) resultado[3];
             respuestam.setPreguntaModel(preguntam);
-            respuestam.getPreguntaModel().setCategoriaModel(categoriam);
-            respuestam.getPreguntaModel().setDificultadModel(dificultadm);
             respuestap.add(respuestam);
         }
         return respuestap;
